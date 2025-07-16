@@ -1,21 +1,45 @@
-MIT License
 
-Copyright (c) 2024 Lin Xiaoya
+```
+DEMONSTRATION ONLY LICENSE
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+Copyright (c) 2024 [Your Name]
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+IMPORTANT NOTICE: This repository is for DEMONSTRATION and PORTFOLIO purposes ONLY.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+TERMS AND CONDITIONS:
+
+1. NO COMMERCIAL OR PRACTICAL USE: This code is provided solely to demonstrate 
+   technical capabilities and methodologies developed during healthcare AI research.
+   It is NOT intended for any commercial, academic, or practical use.
+
+2. NO WARRANTIES: This software is provided "AS IS" without any warranties of any kind.
+   The author makes no representations about the suitability of this software for any purpose.
+
+3. NO REDISTRIBUTION: You may not distribute, modify, or use this code for any purpose
+   other than viewing it for portfolio evaluation.
+
+4. NO CONFIDENTIAL INFORMATION: This repository contains NO confidential, proprietary,
+   or sensitive information. All code has been created for demonstration purposes and
+   does not contain any actual company data, trade secrets, or confidential methodologies.
+
+5. EDUCATIONAL REFERENCE ONLY: This code may be referenced for educational purposes
+   to understand technical approaches, but may not be copied, modified, or implemented.
+
+6. NO LIABILITY: The author shall not be liable for any damages arising from the
+   use or inability to use this software.
+
+7. COMPLIANCE: This demonstration code was created in full compliance with all
+   applicable data governance standards and confidentiality agreements.
+
+BY ACCESSING THIS REPOSITORY, YOU ACKNOWLEDGE THAT:
+- You understand this is demonstration code only
+- You will not use this code for any practical purpose
+- You will not redistribute or modify this code
+- You understand no confidential information is contained herein
+
+For any questions regarding this license, please contact the repository owner.
+
+DISCLAIMER: This repository demonstrates technical skills developed during healthcare
+AI research internship. No confidential data, proprietary algorithms, or sensitive
+information from any organization is included. All code is original work created
+for portfolio demonstration purposes only.
