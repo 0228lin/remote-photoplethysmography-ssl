@@ -1,0 +1,39 @@
+# Training configuration for rPPG self-supervised learning
+# Demonstration configuration - no confidential parameters
+
+model:
+  name: "PhysNet"
+  spatial_dim: 4
+  input_channels: 3
+  
+training:
+  epochs: 30
+  batch_size: 2
+  learning_rate: 1e-5
+  optimizer: "AdamW"
+  
+  # Loss weights
+  snr_weight: 1.0
+  emd_weight: 0.0
+  contrast_weight: 1.0
+
+data:
+  temporal_length: 300
+  resize: 128
+  nfft: 1800
+  
+  # Data augmentation
+  temporal_shift: true
+  frequency_augmentation: true
+
+distributed:
+  backend: "nccl"
+  
+logging:
+  use_wandb: true
+  log_interval: 50
+  save_interval: 5
+
+paths:
+  checkpoint_dir: "./checkpoints"
+  log_dir: "./logs"
