@@ -3,7 +3,7 @@ DEMONSTRATION ONLY LICENSE
 Copyright (c) 2024 IHPC A*STAR
 
 IMPORTANT NOTICE:  
-This repository is provided solely for **demonstration and portfolio purposes** and is the result of **collaborative research conducted by the IHPC A*STAR team**.  
+This repository is provided solely for demonstration and portfolio purposes and is the result of collaborative research conducted by the IHPC A*STAR team.  
 It is not designed, verified, or intended for practical, academic, clinical, or commercial use.
 
 TERMS AND CONDITIONS:
@@ -20,7 +20,7 @@ TERMS AND CONDITIONS:
    You may view the code for educational insight, but redistribution, modification, or integration is strictly prohibited.
 
 4. NO CONFIDENTIAL INFORMATION  
-   This repository contains **no proprietary, confidential, or sensitive data**.  
+   This repository contains no proprietary, confidential, or sensitive data.  
    All content is anonymized and strictly illustrative.
 
 5. EDUCATIONAL REFERENCE ONLY  
@@ -32,8 +32,8 @@ TERMS AND CONDITIONS:
 
 7. AUTHORSHIP CLARIFICATION  
    This repository was originally developed by the IHPC A*STAR team as part of collaborative R&D efforts.  
-   **Xiaoya Lin’s involvement was limited to internship-period contributions and post-internship formatting adjustments.**  
-   **She is no longer affiliated with A*STAR or IHPC** and bears **no responsibility** for original technical design or future usage.
+   Lin Xiaoya’s involvement was limited to internship-period contributions and post-internship formatting adjustments.  
+   She is no longer affiliated with A*STAR or IHPC and bears no responsibility for original technical design or future usage.
 
 8. COMPLIANCE  
    All content complies with institutional ethics, data governance standards, and collaboration agreements.
@@ -45,6 +45,6 @@ BY ACCESSING THIS REPOSITORY, YOU ACKNOWLEDGE THAT:
 
 DISCLAIMER  
 This repository presents illustrative methodologies developed by the IHPC A*STAR healthcare AI team.  
-Edits made after internship completion by former intern **Xiaoya Lin** are strictly limited to formatting, documentation clarity, and repository organization.  
+Edits made after internship completion by former intern Lin Xiaoya are strictly limited to formatting, documentation clarity, and repository organization.  
 No confidential data or institutional algorithms are included.
 
