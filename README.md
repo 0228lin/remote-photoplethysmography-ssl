@@ -12,7 +12,7 @@
 </div>
 
 **⚠️ DEMONSTRATION REPOSITORY ONLY - NO PRACTICAL USE PERMITTED**
-This repository contains demonstration code developed during a healthcare data preprocessing research internship. It is intended for portfolio purposes only and contains no confidential data or proprietary information.
+This repository contains **demonstration code only**, developed to showcase technical capabilities in healthcare AI research. This code is **NOT for any commercial, academic, or practical use** and contains **NO confidential information**.
 
 ## Overview
 
@@ -147,9 +147,7 @@ For questions about this demonstration repository, please open an issue.
 
 </div>
 
-**⚠️ DEMONSTRATION REPOSITORY ONLY - NO PRACTICAL USE PERMITTED**
 
-This repository contains **demonstration code only**, developed to showcase technical capabilities in healthcare AI research. This code is **NOT for any commercial, academic, or practical use** and contains **NO confidential information**.
 
 ## 🚨 Important Disclaimers
 
@@ -556,108 +554,9 @@ python_classes = ["Test*"]
 python_functions = ["test_*"]
 ```
 
-#
 
-## **7. Add GitHub Actions CI/CD**
 
-Create `.github/workflows/demo-tests.yml`:
 
-```yaml
-name: Demo Tests
-
-on:
-  push:
-    branches: [ main, develop ]
-  pull_request:
-    branches: [ main ]
-
-jobs:
-  test:
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        python-version: [3.8, 3.9]
-
-    steps:
-    - uses: actions/checkout@v3
-    
-    - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v3
-      with:
-        python-version: ${{ matrix.python-version }}
-    
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install -r requirements.txt
-        pip install pytest pytest-cov black isort
-    
-    - name: Code formatting check
-      run: |
-        black --check src/ tests/ scripts/
-        isort --check-only src/ tests/ scripts/
-    
-    - name: Run tests
-      run: |
-        pytest tests/ -v --cov=src --cov-report=xml
-    
-    - name: Run demo
-      run: |
-        python scripts/demo.py
-    
-    - name: Upload coverage
-      uses: codecov/codecov-action@v3
-      with:
-        file: ./coverage.xml
-        flags: unittests
-        name: codecov-umbrella
-```
-
-## **8. Create Professional Documentation**
-
-### **docs/CONTRIBUTING.md**
-```markdown
-# Contributing Guidelines
-
-## ⚠️ Important Notice
-
-This repository is for **DEMONSTRATION PURPOSES ONLY**. It showcases technical capabilities developed during healthcare AI research and is not intended for contributions or practical use.
-
-## For Portfolio Reviewers
-
-If you're reviewing this code for employment or collaboration purposes:
-
-### Technical Skills Demonstrated
-- **PyTorch & Deep Learning**: Advanced 3D CNN architectures
-- **Computer Vision**: Face detection, video processing pipelines  
-- **Signal Processing**: FFT analysis, physiological signal processing
-- **Distributed Systems**: Multi-GPU training with PyTorch DDP
-- **Software Engineering**: Clean architecture, testing, documentation
-
-### Healthcare AI Experience
-- **Privacy-Preserving ML**: Anonymization techniques for sensitive data
-- **Data Governance**: Compliance with healthcare data standards
-- **Feature Engineering**: Physiological signal feature extraction
-- **Model Optimization**: Performance tuning for real-time applications
-
-### Research Contributions
-- **Self-Supervised Learning**: Novel frequency domain consistency learning
-- **Multi-view Learning**: Temporal augmentation strategies
-- **Evaluation Metrics**: Comprehensive physiological signal assessment
-
-## Code Quality Standards
-
-This demonstration follows professional development practices:
-- **Type Hints**: Comprehensive type annotations
-- **Documentation**: Detailed docstrings and API docs
-- **Testing**: Unit tests with >85% coverage
-- **CI/CD**: Automated testing and quality checks
-- **Code Style**: Black formatting, isort imports
-
-## Contact
-
-For questions about this technical demonstration, please reach out through GitHub issues.
-```
 
 ## **9. Add Interactive Jupyter Notebook**
 
