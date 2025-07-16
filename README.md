@@ -29,13 +29,13 @@ This project implements a **self-supervised remote photoplethysmography (rPPG)**
 
 ---
 
-## 🚀 Highlights
+## 💡 Highlights
 
-- 💡 **Self-Supervised Learning**: Frequency-domain contrastive learning for physiological signal estimation  
-- 🖥️ **Distributed Training**: Multi-GPU support via PyTorch DDP  
-- 🔐 **Privacy Preservation**: Anonymized preprocessing for healthcare datasets  
-- 🎚️ **Signal Processing**: Robust FFT-based heart rate extraction  
-- 🧩 **Model Architecture**: PhysNet-based 3D CNN for spatiotemporal learning  
+-  **Self-Supervised Learning**: Frequency-domain contrastive learning for physiological signal estimation  
+-  **Distributed Training**: Multi-GPU support via PyTorch DDP  
+-  **Privacy Preservation**: Anonymized preprocessing for healthcare datasets  
+-  **Signal Processing**: Robust FFT-based heart rate extraction  
+-  **Model Architecture**: PhysNet-based 3D CNN for spatiotemporal learning  
 
 ---
 
@@ -118,6 +118,6 @@ This work was developed in collaboration with the **IHPC (Institute of High Perf
 
 - 💼 [LinkedIn](https://www.linkedin.com/in/xiaoya-lin/)  
 - 📧 [Email](mailto:linx0070@e.ntu.edu.sg)  
-- 🧪 [Portfolio](https://0228lin.github.io/)  
+- 🧩 [Personal Homepage](https://0228lin.github.io/)  
 
 
