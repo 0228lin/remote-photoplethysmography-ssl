@@ -44,7 +44,7 @@ BY ACCESSING THIS REPOSITORY, YOU ACKNOWLEDGE THAT:
 - You accept that no contributor — including former interns — may be held accountable for its application or misuse
 
 DISCLAIMER  
-This repository presents illustrative methodologies developed by the IHPC A*STAR healthcare AI team.  
-Edits made after internship completion by former intern Lin Xiaoya are strictly limited to formatting, documentation clarity, and repository organization.  
+Subsequent improvements and revisions were made by Lin Xiaoya after the internship period. 
+These modifications enhance clarity, structure, and selected technical components. 
+However, the repository remains a collaborative work by IHPC A*STAR, and Lin Xiaoya assumes no responsibility for original methods, datasets, or any real-world application of the code.
 No confidential data or institutional algorithms are included.
-
