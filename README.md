@@ -14,8 +14,15 @@
 **⚠️ DEMONSTRATION REPOSITORY ONLY - NO PRACTICAL USE PERMITTED**
 This repository contains **demonstration code only**, developed to showcase technical capabilities in healthcare AI research. This code is **NOT for any commercial, academic, or practical use** and contains **NO confidential information**.
 
-## Overview
+## 🚨 Important Disclaimers
 
+- **DEMONSTRATION ONLY**: This code is for portfolio demonstration purposes exclusively
+- **NO CONFIDENTIAL DATA**: Contains no proprietary, sensitive, or confidential information
+- **NO PRACTICAL USE**: Not intended for any real-world application or research use
+- **COMPLIANCE**: Created in full compliance with data governance and confidentiality standards
+
+
+## Overview
 This project implements a self-supervised learning approach for remote photoplethysmography (rPPG) using facial video analysis. The system can estimate heart rate from facial videos without requiring ground truth physiological signals during training.
 
 ## Key Features
@@ -43,7 +50,6 @@ This project implements a self-supervised learning approach for remote photoplet
 This work utilizes publicly available datasets for research purposes:
 - **UBFC-rPPG**: Available with academic approval
 - **PURE**: Available for research use
-- Custom preprocessing for healthcare datasets (anonymized)
 
 **Note**: All sensitive healthcare data has been anonymized and is not included in this repository.
 
@@ -63,7 +69,7 @@ wandb>=0.12.0
 
 1. **Clone the repository**
 ```bash
-git clone https://github.com/yourusername/remote-photoplethysmography-ssl.git
+git clone https://github.com/0228lin/remote-photoplethysmography-ssl.git
 cd remote-photoplethysmography-ssl
 ```
 
@@ -93,6 +99,7 @@ torchrun --nproc_per_node=4 scripts/train.py --config configs/training_config.ya
 - **Performance Optimization**: Achieved competitive results with minimal labeled data
 - **Scalable Training**: Implemented distributed training for large-scale datasets
 
+
 ## Academic Background
 
 This work was developed during a healthcare data preprocessing research internship, supporting AI-driven healthcare applications with focus on:
@@ -100,13 +107,6 @@ This work was developed during a healthcare data preprocessing research internsh
 - Feature engineering and model optimization
 - Cross-functional collaboration in healthcare AI
 
-## Disclaimer
-
-- This repository is for **demonstration and portfolio purposes only**
-- Contains **no confidential or proprietary information**
-- All healthcare data has been **anonymized** according to data governance standards
-- Not intended for commercial use or medical diagnosis
-- Datasets require separate approval for academic research
 
 ## Citation
 
@@ -115,7 +115,7 @@ If you find this work useful for your research, please consider citing:
 ```bibtex
 @misc{rppg_ssl_2024,
   title={Self-Supervised Learning for Remote Photoplethysmography},
-  author={[Your Name]},
+  author={[Lin Xiaoya]},
   year={2024},
   note={Demonstration repository for healthcare AI research}
 }
@@ -123,7 +123,7 @@ If you find this work useful for your research, please consider citing:
 
 ## License
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+See the LICENSE file for details.
 
 ## Contact
 
@@ -133,29 +133,6 @@ For questions about this demonstration repository, please open an issue.
 
 ```
 
-# Remote Photoplethysmography with Self-Supervised Learning
-
-<div align="center">
-
-![Demo Only](https://img.shields.io/badge/Status-Demo%20Only-red?style=for-the-badge)
-![Python](https://img.shields.io/badge/Python-3.8+-blue?style=for-the-badge&logo=python)
-![PyTorch](https://img.shields.io/badge/PyTorch-1.12+-orange?style=for-the-badge&logo=pytorch)
-![License](https://img.shields.io/badge/License-Demo%20Only-lightgrey?style=for-the-badge)
-
-[![Portfolio](https://img.shields.io/badge/Portfolio-Healthcare%20AI-green?style=flat-square)](https://github.com/yourusername)
-[![Skills](https://img.shields.io/badge/Skills-Computer%20Vision%20%7C%20Deep%20Learning%20%7C%20Signal%20Processing-blue?style=flat-square)](https://github.com/yourusername)
-
-</div>
-
-
-
-## 🚨 Important Disclaimers
-
-- **DEMONSTRATION ONLY**: This code is for portfolio demonstration purposes exclusively
-- **NO CONFIDENTIAL DATA**: Contains no proprietary, sensitive, or confidential information
-- **NO PRACTICAL USE**: Not intended for any real-world application or research use
-- **COMPLIANCE**: Created in full compliance with data governance and confidentiality standards
-- **ORIGINAL WORK**: All code is original demonstration work, not copied from any organization
 
 ## Quick Demo
 
@@ -163,7 +140,7 @@ To see the demo in action (requires no real data):
 
 ```bash
 # Clone repository
-git clone https://github.com/yourusername/remote-photoplethysmography-ssl.git
+git clone https://github.com/0228lin/remote-photoplethysmography-ssl.git
 cd remote-photoplethysmography-ssl
 
 # Install dependencies
@@ -178,12 +155,6 @@ python scripts/train_demo.py
 
 ## Technical Demonstration
 
-This repository demonstrates proficiency in:
-- **PyTorch & Deep Learning**: 3D CNN architectures, distributed training
-- **Healthcare AI**: Privacy-preserving preprocessing, signal processing
-- **Self-Supervised Learning**: Novel frequency-domain contrastive learning
-- **Computer Vision**: Face detection, video processing
-- **Software Engineering**: Clean architecture, configuration management
 
 [Rest of README content...]
 ```
