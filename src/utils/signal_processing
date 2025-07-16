@@ -1,0 +1,289 @@
+"""
+Signal processing utilities for remote photoplethysmography.
+Includes FFT-based heart rate estimation and quality metrics.
+
+Demonstration code - no confidential information.
+"""
+
+import numpy as np
+import torch
+import torch.nn.functional as F
+from scipy.fft import fft
+from scipy import signal
+from scipy.signal import butter, filtfilt
+
+
+def butter_bandpass(sig, lowcut, highcut, fs, order=2):
+    """Apply butterworth bandpass filter."""
+    sig = np.reshape(sig, -1)
+    nyq = 0.5 * fs
+    low = lowcut / nyq
+    high = highcut / nyq
+    b, a = butter(order, [low, high], btype='band')
+    y = filtfilt(b, a, sig)
+    return y
+
+
+def hr_fft_small_Fs_internal(sig, fs, N, harmonics_removal=False):
+    """
+    Estimate heart rate using FFT analysis.
+    
+    Args:
+        sig: Input signal
+        fs: Sampling frequency
+        N: FFT length
+        harmonics_removal: Whether to remove harmonics
+        
+    Returns:
+        hr: Estimated heart rate
+        sig_f_original: Original FFT
+        x_hr: Frequency axis
+    """
+    sig = sig.reshape(-1)
+    sig = sig * signal.windows.hann(sig.shape[0])
+    sig_f = np.abs(fft(sig, n=N))
+    
+    # Define frequency range for heart rate (0.6-4 Hz)
+    low_idx = np.round(0.6 / fs * N).astype('int')
+    high_idx = np.round(4 / fs * N).astype('int')
+    sig_f_original = sig_f.copy()
+
+    sig_f[:low_idx] = 0
+    sig_f[high_idx:] = 0
+
+    # Find peaks
+    peak_idx, _ = signal.find_peaks(sig_f)
+    if len(peak_idx) == 0:
+        return 60, sig_f_original, np.arange(len(sig)) / len(sig) * fs * 60
+        
+    sort_idx = np.argsort(sig_f[peak_idx])[::-1]
+
+    peak_idx1 = peak_idx[sort_idx[0]]
+    f_hr1 = peak_idx1 / N * fs
+    hr1 = f_hr1 * 60
+
+    if len(sort_idx) > 1:
+        peak_idx2 = peak_idx[sort_idx[1]]
+        f_hr2 = peak_idx2 / N * fs
+        hr2 = f_hr2 * 60
+    else:
+        hr2 = hr1
+
+    # Harmonic removal
+    if harmonics_removal and len(sort_idx) > 1:
+        if np.abs(hr1 - 2 * hr2) < 10:
+            hr = hr2
+        else:
+            hr = hr1
+    else:
+        hr = hr1
+
+    x_hr = np.arange(len(sig)) / len(sig) * fs * 60
+    return round(hr), sig_f_original, x_hr
+
+
+def hr_fft_batch_small_Fs_internal_my(sig_list, fps, N, harmonics_removal=False):
+    """Batch version of heart rate estimation."""
+    hr_list = []
+    for i, sig in enumerate(sig_list):
+        fs = fps[i] if isinstance(fps, (list, np.ndarray)) else fps
+        hr, _, _ = hr_fft_small_Fs_internal(sig, fs, N, harmonics_removal)
+        hr_list.append(hr)
+    return np.array(hr_list)
+
+
+def torch_power_spectral_density(x, nfft=5400, fps=30, low_hz=2/3, high_hz=3.0, 
+                                return_angle=False, radians=True, normalize=True, bandpass=True):
+    """
+    Compute power spectral density using PyTorch.
+    
+    Args:
+        x: Input signal tensor
+        nfft: FFT length
+        fps: Sampling frequency
+        low_hz: Low frequency cutoff
+        high_hz: High frequency cutoff
+        normalize: Whether to normalize PSD
+        bandpass: Whether to apply bandpass filter
+        
+    Returns:
+        freqs: Frequency vector
+        psd: Power spectral density
+    """
+    # Center the signal
+    centered = x - torch.mean(x, keepdim=True, dim=1)
+    
+    # Compute FFT
+    rfft_out = torch.fft.rfft(centered, n=nfft, dim=1)
+    psd = torch.abs(rfft_out) ** 2
+    
+    # Frequency vector
+    N = psd.shape[1]
+    freqs = torch.fft.rfftfreq(2*N-1, 1/fps)
+    
+    if return_angle:
+        angle = torch.angle(rfft_out)
+        if not radians:
+            angle = torch.rad2deg(angle)
+        if bandpass:
+            freqs, psd, angle = ideal_bandpass_with_angle(freqs, psd, low_hz, high_hz, angle)
+        if normalize:
+            psd = normalize_psd(psd)
+        return freqs, psd, angle
+    else:
+        if bandpass:
+            freqs, psd = ideal_bandpass(freqs, psd, low_hz, high_hz)
+        if normalize:
+            psd = normalize_psd(psd)
+        return freqs, psd
+
+
+def ideal_bandpass(freqs, psd, low_hz, high_hz):
+    """Apply ideal bandpass filter to PSD."""
+    freq_idcs = torch.logical_and(freqs >= low_hz, freqs <= high_hz)
+    freqs = freqs[freq_idcs]
+    psd = psd[:, freq_idcs]
+    return freqs, psd
+
+
+def ideal_bandpass_with_angle(freqs, psd, low_hz, high_hz, angle):
+    """Apply ideal bandpass filter to PSD with angle."""
+    freq_idcs = torch.logical_and(freqs >= low_hz, freqs <= high_hz)
+    freqs = freqs[freq_idcs]
+    psd = psd[:, freq_idcs]
+    angle = angle[:, freq_idcs]
+    return freqs, psd, angle
+
+
+def normalize_psd(psd):
+    """Normalize PSD to sum to 1."""
+    return psd / torch.sum(psd, keepdim=True, dim=1)
+
+
+def SNR_SSL(freqs, psd, low_hz=2/3, high_hz=3.0, freq_delta=0.1, bandpassed=False, device=None):
+    """
+    Compute Signal-to-Noise Ratio for self-supervised learning.
+    
+    Args:
+        freqs: Frequency vector
+        psd: Power spectral density
+        low_hz: Low frequency bound
+        high_hz: High frequency bound
+        freq_delta: Frequency window around peak
+        bandpassed: Whether PSD is already bandpassed
+        device: Computing device
+        
+    Returns:
+        snr_loss: SNR-based loss value
+    """
+    EPSILON = 1e-10
+    
+    if not bandpassed:
+        freqs, psd = ideal_bandpass(freqs, psd, low_hz, high_hz)
+        
+    # Find signal frequency (maximum in PSD)
+    signal_freq_idx = torch.argmax(psd, dim=1)
+    signal_freq = freqs[signal_freq_idx].view(-1, 1)
+    freqs_expanded = freqs.repeat(psd.shape[0], 1)
+    
+    # Define signal band around peak
+    low_cut = signal_freq - freq_delta
+    high_cut = signal_freq + freq_delta
+    band_idcs = torch.logical_and(freqs_expanded >= low_cut, freqs_expanded <= high_cut)
+    
+    if device:
+        band_idcs = band_idcs.to(device)
+    
+    # Compute signal and noise power
+    signal_band = torch.sum(psd * band_idcs, dim=1)
+    noise_band = torch.sum(psd * torch.logical_not(band_idcs), dim=1)
+    denom = signal_band + noise_band + EPSILON
+    snr_loss = torch.mean(noise_band / denom)
+    
+    return snr_loss
+
+
+def IPR_SSL(freqs, psd, low_hz=2/3, high_hz=3.0, device=None):
+    """
+    Compute Irrelevant Power Ratio for self-supervised learning.
+    
+    Args:
+        freqs: Frequency vector
+        psd: Power spectral density
+        low_hz: Low frequency bound for relevant band
+        high_hz: High frequency bound for relevant band
+        device: Computing device
+        
+    Returns:
+        ipr_loss: IPR-based loss value
+    """
+    EPSILON = 1e-10
+    
+    # Define relevant frequency band
+    use_freqs = torch.logical_and(freqs >= low_hz, freqs <= high_hz)
+    zero_freqs = torch.logical_not(use_freqs)
+    
+    # Compute energy in relevant and irrelevant bands
+    use_energy = torch.sum(psd[:, use_freqs], dim=1)
+    zero_energy = torch.sum(psd[:, zero_freqs], dim=1)
+    denom = use_energy + zero_energy + EPSILON
+    ipr_loss = torch.mean(zero_energy / denom)
+    
+    return ipr_loss
+
+
+def EMD_SSL(freqs, psd, low_hz=2/3, high_hz=3.0, normalized=True, bandpassed=True, device='cuda'):
+    """
+    Compute Earth Mover's Distance to uniform distribution.
+    
+    Args:
+        freqs: Frequency vector
+        psd: Power spectral density
+        low_hz: Low frequency bound
+        high_hz: High frequency bound
+        normalized: Whether PSD is normalized
+        bandpassed: Whether PSD is bandpassed
+        device: Computing device
+        
+    Returns:
+        emd_loss: EMD-based loss value
+    """
+    if not bandpassed:
+        freqs, psd = ideal_bandpass(freqs, psd, low_hz, high_hz)
+    if not normalized:
+        psd = normalize_psd(psd)
+        
+    B, T = psd.shape
+    psd_mean = torch.sum(psd, dim=0) / B
+    expected = (torch.ones(T) / T).to(device)
+    
+    emd_loss = torch.mean(torch.square(
+        torch.cumsum(psd_mean, dim=0) - torch.cumsum(expected, dim=0)
+    ))
+    
+    return emd_loss
+
+
+def calculate_metrics(pred_hr, true_hr):
+    """Calculate evaluation metrics for heart rate estimation."""
+    pred_hr = np.array(pred_hr)
+    true_hr = np.array(true_hr)
+    
+    # Mean Absolute Error
+    mae = np.mean(np.abs(pred_hr - true_hr))
+    
+    # Root Mean Square Error
+    rmse = np.sqrt(np.mean((pred_hr - true_hr) ** 2))
+    
+    # Mean Absolute Percentage Error
+    mape = np.mean(np.abs((pred_hr - true_hr) / true_hr)) * 100
+    
+    # Pearson correlation coefficient
+    correlation = np.corrcoef(pred_hr, true_hr)[0, 1]
+    
+    return {
+        'MAE': mae,
+        'RMSE': rmse,
+        'MAPE': mape,
+        'Correlation': correlation
+    }
