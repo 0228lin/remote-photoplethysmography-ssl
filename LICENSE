@@ -2,49 +2,47 @@ DEMONSTRATION ONLY LICENSE
 
 Copyright (c) 2024 IHPC A*STAR
 
-IMPORTANT NOTICE:  
-This repository is provided solely for demonstration and portfolio purposes and is the result of collaborative research conducted by the IHPC A*STAR team.  
+IMPORTANT NOTICE  
+This repository is provided solely for demonstration and portfolio purposes. It was originally developed as part of a collaborative healthcare AI research effort by the IHPC A*STAR team.
+
 It is not designed, verified, or intended for practical, academic, clinical, or commercial use.
 
-TERMS AND CONDITIONS:
+TERMS AND CONDITIONS
 
 1. NO COMMERCIAL OR PRACTICAL USE  
-   This code demonstrates technical concepts from healthcare AI research.  
-   It may not be used, redistributed, or repurposed for any operational or production context.
+   Code is for concept demonstration only. It may not be reused, redistributed, or adapted for operational or production contexts.
 
 2. NO WARRANTIES  
-   The repository is provided “AS IS” without warranties or guarantees.  
-   Neither IHPC A*STAR nor contributors make claims regarding reliability, safety, or suitability.
+   Provided “AS IS” without warranties or guarantees. IHPC A*STAR and contributors make no claims on performance, reliability, or fitness for any purpose.
 
 3. NO REDISTRIBUTION  
-   You may view the code for educational insight, but redistribution, modification, or integration is strictly prohibited.
+   Viewing for educational insight is permitted. Redistribution, modification, or integration in any system is strictly prohibited.
 
 4. NO CONFIDENTIAL INFORMATION  
-   This repository contains no proprietary, confidential, or sensitive data.  
-   All content is anonymized and strictly illustrative.
+   All content is anonymized and illustrative. No proprietary or sensitive healthcare data is included.
 
 5. EDUCATIONAL REFERENCE ONLY  
-   Material may be referenced for conceptual understanding only.  
-   It must not be copied or applied in any real-world project.
+   Material may be referenced conceptually, but not used in any real-world application.
 
 6. NO LIABILITY  
-   IHPC A*STAR and its past contributors disclaim all liability for any use, misuse, or interpretation of this repository.
+   IHPC A*STAR and prior contributors disclaim all liability for interpretation, usage, or derivative works.
 
 7. AUTHORSHIP CLARIFICATION  
-   This repository was originally developed by the IHPC A*STAR team as part of collaborative R&D efforts.  
-   Lin Xiaoya’s involvement was limited to internship-period contributions and post-internship formatting adjustments.  
-   She is no longer affiliated with A*STAR or IHPC and bears no responsibility for original technical design or future usage.
+   This repository originated from collaborative research by IHPC A*STAR.  
+   Intern Lin Xiaoya contributed during her internship, and post-internship independently reformatted and amended the codebase for technical showcasing.  
+   She is no longer affiliated with A*STAR or IHPC and assumes no responsibility for the original design, datasets, or any applied usage.
 
-8. COMPLIANCE  
-   All content complies with institutional ethics, data governance standards, and collaboration agreements.
+8. MODIFICATION NOTICE  
+   Post-internship updates—by Lin Xiaoya—include changes to structure, clarity, and selected technical components.  
+   These adjustments were made independently, with no inclusion of proprietary algorithms or institutional tools.
 
-BY ACCESSING THIS REPOSITORY, YOU ACKNOWLEDGE THAT:
-- You will not use this code beyond demonstration reference
-- You understand it contains no confidential or operational components
-- You accept that no contributor — including former interns — may be held accountable for its application or misuse
+9. COMPLIANCE  
+   All repository content complies with data governance and institutional ethics policies.  
+   No confidential, licensed, or research-sensitive data is present.
 
-DISCLAIMER  
-Subsequent improvements and revisions were made by Lin Xiaoya after the internship period. 
-These modifications enhance clarity, structure, and selected technical components. 
-However, the repository remains a collaborative work by IHPC A*STAR, and Lin Xiaoya assumes no responsibility for original methods, datasets, or any real-world application of the code.
-No confidential data or institutional algorithms are included.
+
+By accessing this repository, you agree to the above terms and acknowledge that:
+
+- Use is limited to technical demonstration and conceptual understanding  
+- No contributor, past or present, may be held accountable for its reuse  
+- Code remains non-operational, non-clinical, and non-commercial
