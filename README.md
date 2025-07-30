@@ -74,24 +74,6 @@ python scripts/demo.py
 
 ---
 
-## 💼 Experience Highlights
-
-- AI-driven healthcare applications with interdisciplinary collaboration  
-- Privacy-first data workflows and anonymization strategies  
-- Deep learning-based signal extraction and feature engineering  
-- Clear documentation and reproducibility standards  
-
----
-
-## 🎓 Academic Context
-
-Developed during a healthcare data preprocessing internship supporting:
-- Data governance and anonymization pipelines  
-- Feature engineering and CNN optimization  
-- Collaboration across AI and healthcare domains  
-
----
-
 ## 📊 Technical Metrics
 
 | Feature                   | Method                    | Result               |
@@ -105,14 +87,19 @@ Developed during a healthcare data preprocessing internship supporting:
 
 ## 👩‍💻 Developed By
 
-This work was developed in collaboration with the **IHPC (Institute of High Performance Computing), A*STAR (Agency for Science, Technology and Research)** as part of a healthcare AI research initiative.
+This project was originally initiated as part of a **healthcare AI research collaboration** with the **Institute of High Performance Computing (IHPC), A*STAR (Agency for Science, Technology and Research)**.
 
-**Team Members**: IHPC Healthcare AI Team including Lin Xiaoya  
-**Project**: AI Facial Health Screening Validation  
-**Role**: Healthcare Data Preprocessing Research Intern  
-**Affiliation**: A*STAR & Nanyang Technological University
+- **Team Members**: IHPC Healthcare AI Team including Lin Xiaoya  
+- **Project**: AI Facial Health Screening Validation  
+- **Role**: Healthcare Data Preprocessing Research Intern  
+- **Affiliation**: A*STAR & Nanyang Technological University
+
+> 🔧 The current demonstration code has been **independently modified** by Lin Xiaoya and **differs from the original codebase** developed during her internship.  
+> ✨ All amendments were performed **outside the internship scope**, intended solely for technical showcasing in healthcare AI.  
+> 🚫 Not for academic or commercial reuse.  
 
 ---
+
 
 ## 🔗 Connect with Me
 
